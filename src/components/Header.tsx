@@ -1,6 +1,7 @@
 
 import React from 'react';
 import {useState } from 'react'
+
 import { color, motion, useScroll, useSpring } from "framer-motion"
 import { BsFillMoonStarsFill } from "react-icons/bs";
 // import './../styles/individualfeatures.module.css'
