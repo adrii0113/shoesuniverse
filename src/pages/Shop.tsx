@@ -21,7 +21,6 @@ export default function Shop (){
                     {/* HEADER */}
                     <Header></Header>
                     <article>
-                        <h2>All our products</h2>
                             <Gridproducts></Gridproducts>
                     </article>
                 </section>

@@ -1,14 +1,29 @@
 import React from "react";
-
+// hooks
+import { useEffect, useState } from "react"
 // COMPONENTS
 import Searchbar from "./Searchbar"
-
+// api call
+import { listpodructs } from "@/api/apicall";
 
 export default function Gridproducts () {
+    // hooks
+    const [count, setCount] = useState(0);
+    // products
+    const [products, setProducts] = useState([{}])
 
+    // get products data from api and set it accordingly
+    useEffect(() => {  
+
+        setProducts(listpodructs)
+    
+    });
     return (
+        
     <div className="container my-12 mx-auto px-4 md:px-12">
-        <Searchbar></Searchbar>
+    <h2>All our products</h2>
+    
+    <Searchbar></Searchbar>
     <div className="flex flex-wrap -mx-1 lg:-mx-4">
 
         

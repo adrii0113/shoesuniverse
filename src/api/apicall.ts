@@ -19,10 +19,18 @@
 
     export const listpodructs = () => {
 
-    fetch('https://kohls.p.rapidapi.com/products/list?limit=24&offset=1&dimensionValueID=AgeAppropriate%3ATeens', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+    
+       var products: Object[] = []
+
+        fetch('https://kohls.p.rapidapi.com/products/list?limit=24&offset=1&dimensionValueID=AgeAppropriate%3ATeens', options)
+            .then(response => response.json())
+            // .then(response => console.log(response.payload.products))
+            .then (response  => products.push(response.payload.products))
+            .catch(err => console.error(err))
+
+        return products;
+
+
        
 
     }
@@ -59,6 +67,6 @@
 
 
     module.exports = {
-
+        listpodructs
        
     }
