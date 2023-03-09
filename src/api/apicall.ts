@@ -1,72 +1,18 @@
 
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'f94680e291msh207394d94061f8cp1b610ejsn2a5ea3aa1847',
-            'X-RapidAPI-Host': 'kohls.p.rapidapi.com'
-        }
-    };
 
-    export const listcategories = () => {
-
-    fetch('https://kohls.p.rapidapi.com/categories/list', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+    export const getMovieByTitle =  async (title: String) => {
         
-    }
-
-
-    export const listpodructs = () => {
-
-    
-       var products: Object[] = []
-
-        fetch('https://kohls.p.rapidapi.com/products/list?limit=24&offset=1&dimensionValueID=AgeAppropriate%3ATeens', options)
-            .then(response => response.json())
-            // .then(response => console.log(response.payload.products))
-            .then (response  => products.push(response.payload.products))
-            .catch(err => console.error(err))
-
-        return products;
-
-
-       
-
-    }
-
-
-    export const searchProductsByBarcode = (barcode: string) => {
-        
-        fetch('https://kohls.p.rapidapi.com/products/search-by-barcode?upc='+barcode+'', options)
+        const  response = await fetch (`http://www.omdbapi.com/?t=${title}&apikey=1d90c95a`)
         .then(response => response.json())
-        .then(response => console.log(response))
+        // .then(response => console.log(response))
         .catch(err => console.error(err));
+        // console.log(response)
+        return response;
     }
 
-
-    export const getProductDetails = () =>{
-
-        fetch('https://kohls.p.rapidapi.com/products/detail?webID=4201989', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-
-    }
-
-    export const getListReview = () =>{
-
-        
-        fetch('https://kohls.p.rapidapi.com/reviews/list?ProductId=4201989&Limit=6&Offset=0&Sort=SubmissionTime%3Adesc', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-    }
-
-    
 
 
     module.exports = {
-        listpodructs
-       
+        getMovieByTitle
     }
+  
