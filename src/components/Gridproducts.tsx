@@ -1,48 +1,53 @@
 import React from "react";
 // hooks
 import { useEffect, useState } from "react"
+import axios from "axios";
 // COMPONENTS
 import Searchbar from "./Searchbar"
 import Moviecard from "./Moviecard";
 // api call
-import { getMovieByTitle } from "@/api/apicall";
+import { getMovieByTitle, getDataByType } from "@/api/apicall";
+import { Console } from "console";
 
 export default function Gridproducts () {
     // hooks
     const [count, setCount] = useState(0);
     // products
-    const [movies, setMovies] = useState([{}])
+    const [movies, setMovies] : any = useState({})
 
     // get products data from api and set it accordingly
     const storeMovies = async (title : String) => {
-        const recibedMovies =  await getMovieByTitle(title);
-        console.log(setMovies(recibedMovies))
-        console.log(movies)
-        return recibedMovies;
-    }
-    useEffect(() => {  
+        // const recibedMovies =  await getMovieByTitle(title);
+        // setMovies(recibedMovies)
+        // console.log(movies)
+        // return recibedMovies;
 
+        const res = await axios.get(`http://www.omdbapi.com/?t=${title}&apikey=1d90c95a`)
+        setMovies(
+            res.data
+        )
+        // console.log(res.data)
+    }
+
+  
+    useEffect(() => {
+      
         console.log(movies)
+      }, [movies]);
+
     
-    },[]);
    
     return (
         
         <div className="container my-12 mx-auto px-4 md:px-12">
         <h2>All our products</h2>
-        {/* <button onClick={() => storeProducts()}>test</button> */}
-        {/* {
-           products.map
-    
-    
-        } */}
+        <button onClick={() => {getDataByType('series', 'titan')}}>test</button>
+        <select name="" id="">
+            <option value="">Movie</option>
+            <option value="">Serie</option>
+        </select>
 
-            {/* {products.map((p) => (
-                // <Product key={p._id} post={p} />
-                <div>
-                    <h2>adrian</h2>
-                </div>
-            ))} */}
+           
     {/* INIT SEARCHBAR */}
     <form className="flex items-center">   
         <label htmlFor="voice-search" className="sr-only">Search</label>
@@ -60,10 +65,21 @@ export default function Gridproducts () {
     </button>
         </form>
     {/* END SEARCHBAR */}
+    
     <div className="flex flex-wrap -mx-1 lg:-mx-4">
-        
-   
-        {/* <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+    {/* {
+            movies.map((movie)=>{
+                <Moviecard title={movie.title}/>
+            })
+        } */}
+        {
+            // Array.isArray(movies)
+          <Moviecard title={movies.Title} released={movies.Released} runtime={movies.Runtime} genre={movies.Genre} img={movies.Poster} year={movies.Year}/>
+        }
+ 
+        {/* <Moviecard title={movies.}/> */}
+{/*    
+        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
             
             <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">

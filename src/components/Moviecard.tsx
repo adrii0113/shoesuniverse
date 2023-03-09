@@ -2,9 +2,11 @@
 type MovieProps = {
 
     title : string,
-    // released : Date,
-    // runtimes : string,
-    // genre : string,
+    released : string,
+    runtime : string,
+    genre : string,
+    img : string,
+    year : string
 
 
 }
@@ -18,7 +20,7 @@ export default function Moviecard (props: MovieProps){
             <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">
 
                 <a href="#">
-                    {/* <img alt="Placeholder" className="block h-auto w-full" src={poster}></img> */}
+                    <img alt="Placeholder" className="block h-auto w-full" src={props.img}></img>
                 </a>
 
                 <header className="flex items-center justify-between leading-tight p-2 md:p-4">
@@ -28,7 +30,7 @@ export default function Moviecard (props: MovieProps){
                         </a>
                     </h1>
                     <p className="text-grey-darker text-sm">
-                        {/* { runtime } */}
+                        { props.runtime }
                     </p>
                 </header>
 
