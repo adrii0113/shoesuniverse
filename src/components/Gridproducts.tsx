@@ -5,6 +5,7 @@ import axios from "axios";
 // COMPONENTS
 import Searchbar from "./Searchbar"
 import Moviecard from "./Moviecard";
+import Moviemodal from "./Moviemodal";
 // api call
 import { getMovieByTitle, getDataByType } from "@/api/apicall";
 import { Console } from "console";
@@ -13,7 +14,7 @@ export default function Gridproducts () {
     // hooks
     const [count, setCount] = useState(0);
     // products
-    const [movies, setMovies] : any = useState({})
+    const [movies, setMovies] : any = useState([{}])
 
     // get products data from api and set it accordingly
     const storeMovies = async (title : String) => {
@@ -31,7 +32,30 @@ export default function Gridproducts () {
 
   
     useEffect(() => {
-      
+        const moviesProps = { 
+            Title:movies.Title,
+            Actors:movies.Actors,
+            Awards:movies.Awards,
+            Country:movies.Country,
+            Director:movies.Director,
+            Language:movies.Language,
+            Metascore:movies.Metascore,
+            Plot:movies.Plot,
+            Production:movies.Production,
+            Rated:movies.Rated,
+            Ratings:movies.Ratings,
+            Realeased:movies.Realeased,
+            Type:movies.Type,
+            Writer:movies.Writer,
+            imdbID:movies.ImdbID,
+            imdbRating:movies.ImdbRating,
+            Runtime:movies.Runtime,
+            Genre:movies.Genre,
+            Img:movies.Poster,
+            Year:movies.Year
+        
+        }
+        console.log(typeof(movies))
         console.log(movies)
       }, [movies]);
 
@@ -67,14 +91,36 @@ export default function Gridproducts () {
     {/* END SEARCHBAR */}
     
     <div className="flex flex-wrap -mx-1 lg:-mx-4">
-    {/* {
-            movies.map((movie)=>{
-                <Moviecard title={movie.title}/>
-            })
-        } */}
+    <Moviemodal></Moviemodal>
         {
-            // Array.isArray(movies)
-          <Moviecard title={movies.Title} released={movies.Released} runtime={movies.Runtime} genre={movies.Genre} img={movies.Poster} year={movies.Year}/>
+            
+                
+
+                     2 > 1?<Moviecard 
+                     title={movies.Title} 
+                     released={movies.Released} 
+                     runtime={movies.Runtime} 
+                     genre={movies.Genre} 
+                     img={movies.Poster} 
+                     year={movies.Year} 
+                     actors={movies.Actors}
+                     plot={movies.Plot} 
+                     awards={movies.Awards}
+                     country={movies.Country}
+                     director={movies.Director}
+                     language={movies.Language}
+                     metascore={movies.Metascore}
+                     production={movies.Production}
+                     rated={movies.Rated}
+                     ratings={movies.Ratings}
+                     writer={movies.Writer}
+                     imdbRating={movies.ImdbRating}
+
+                    />
+                    : null
+                
+
+            
         }
  
         {/* <Moviecard title={movies.}/> */}
