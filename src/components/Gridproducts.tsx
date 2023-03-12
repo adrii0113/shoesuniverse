@@ -32,31 +32,7 @@ export default function Gridproducts () {
 
   
     useEffect(() => {
-        const moviesProps = { 
-            Title:movies.Title,
-            Actors:movies.Actors,
-            Awards:movies.Awards,
-            Country:movies.Country,
-            Director:movies.Director,
-            Language:movies.Language,
-            Metascore:movies.Metascore,
-            Plot:movies.Plot,
-            Production:movies.Production,
-            Rated:movies.Rated,
-            Ratings:movies.Ratings,
-            Realeased:movies.Realeased,
-            Type:movies.Type,
-            Writer:movies.Writer,
-            imdbID:movies.ImdbID,
-            imdbRating:movies.ImdbRating,
-            Runtime:movies.Runtime,
-            Genre:movies.Genre,
-            Img:movies.Poster,
-            Year:movies.Year
-        
-        }
-        console.log(typeof(movies))
-        console.log(movies)
+        console.log(movies.Response)
       }, [movies]);
 
     
@@ -64,12 +40,16 @@ export default function Gridproducts () {
     return (
         
         <div className="container my-12 mx-auto px-4 md:px-12">
-        <h2>All our products</h2>
-        <button onClick={() => {getDataByType('series', 'titan')}}>test</button>
+        {/* <h2>Movie/series finder</h2> */}
+
+        <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-white-gold from-black-to-gray">Movie finder</span> Scalable AI.</h1>
+        <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400"></p>
+
+        {/* <button onClick={() => {getDataByType('series', 'titan')}}>test</button>
         <select name="" id="">
             <option value="">Movie</option>
             <option value="">Serie</option>
-        </select>
+        </select> */}
 
            
     {/* INIT SEARCHBAR */}
@@ -79,7 +59,7 @@ export default function Gridproducts () {
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
         </div>
-        <input type="text" id="voice-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos, Design Templates..." required onChange={(value) => storeMovies(value.target.value)}></input>
+        <input type="text" id="voice-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search movies,series..." required onChange={(value) => storeMovies(value.target.value)}></input>
         <button type="button" className="absolute inset-y-0 right-0 flex items-center pr-3">
             <svg aria-hidden="true" className="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd"></path></svg>
         </button>
@@ -96,7 +76,7 @@ export default function Gridproducts () {
             
                 
 
-                     2 > 1?<Moviecard 
+                     movies.Response === 'True'?<Moviecard 
                      title={movies.Title} 
                      released={movies.Released} 
                      runtime={movies.Runtime} 
@@ -114,7 +94,8 @@ export default function Gridproducts () {
                      rated={movies.Rated}
                      ratings={movies.Ratings}
                      writer={movies.Writer}
-                     imdbRating={movies.ImdbRating}
+                     imdbRating={movies.imdbRating}
+                     type={movies.Type}
 
                     />
                     : null
@@ -123,245 +104,27 @@ export default function Gridproducts () {
             
         }
  
-        {/* <Moviecard title={movies.}/> */}
-{/*    
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+        
 
-            
-            <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"></img>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black-to-gray" href="#">
-                            Article Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-white" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"></img>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-            
-
-        </div> */}
         
 
 
-        {/* <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-
-            <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"></img>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-white" href="#">
-                            Article Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-white" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"></img>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-            
-
-        </div> */}
-
-
-
-        {/* <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-
-            <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"></img>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-white" href="#">
-                            Article Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-white" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"></img>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-
-        </div> */}
         
 
 
-        {/* <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
-            
-            <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"></img>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-white" href="#">
-                            Article Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-white" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"></img>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-            
-
-        </div> */}
         
 
 
-        {/* <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-
-            <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"></img>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-white" href="#">
-                            Article Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-white" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"></img>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-
-        </div> */}
+        
         
 
 
-        {/* <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+      
+        
 
 
-            <article className="overflow-hidden rounded-lg shadow-lg bg-white-gold">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"></img>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-white" href="#">
-                            Article Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-white" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"></img>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-            
-
-        </div> */}
+        
         
 
     </div>

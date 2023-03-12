@@ -93,7 +93,7 @@ export default function Moviecard (props: MovieProps){
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold bg-white-gold">
+                  <h3 className="text-3xl font-semibold text-white-gold">
                     {props.title}
                   </h3>
                   <button
@@ -107,33 +107,53 @@ export default function Moviecard (props: MovieProps){
                 </div>
                 
                 <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-slate-500 text-lg leading-relaxed">
+                  <p className="my-4 text-black-to-gray text-lg leading-relaxed">
                     {props.plot}
                   </p>
                 </div>
                 {/* MOVIE DETAILED INFO */}
                 <div className="relative p-6 flex-auto border-t border-solid border-slate-200 rounded-b">
-                    <h2 className="bg-slate-900">Actors</h2>
-                    <p className="bg-slate-900">{props.actors}</p>
+                    <h2 className="text-white-gold mt-0 mb-2 text-2xl font-medium leading-tight">Actors</h2>
+                    <p className="text-black-to-gray">{props.actors}</p>
                 </div>
                 <div className="relative p-6 flex-auto border-t border-solid border-slate-200 rounded-b">
-                    <h2 className="bg-slate-900">Rating</h2>
-                    <p className="bg-slate-900">{props.imdbRating}</p>
+                    <h2 className="mt-0 mb-2 text-2xl font-medium leading-tight text-white-gold">Rating</h2>
+                    <div className="rounded-full p-10 w-72 border-4 border-gray-200">
+                      <div className="bg-gray-300 p-20 w-52 rounded-full text-center">
+                         {props.imdbRating}
+                      </div>
+                    </div>
+                    
                 </div>
-                <div className="relative p-6 flex-auto border-t border-solid border-slate-200 rounded-b">
-                    <h2 className="bg-slate-900">Actors</h2>
-                    <p className="bg-slate-900">{props.actors}</p>
+                <div className="relative p-6 flex-center border-t border-solid border-slate-200 rounded-b columns-3">
+                    
+                    {/* <h2 className="text-white-gold mt-0 mb-2 text-2xl font-medium leading-tight">Type</h2>
+                    <p className="bg-slate-900">{props.type}</p>
+                    <h2 className="text-white-gold mt-0 mb-2 text-2xl font-medium leading-tight">Actors</h2>
+                    <p className="bg-slate-900">{props.actors}</p> */}
+                    <div>
+                      <h2 className="text-white-gold mt-0 mb-2 text-2xl font-medium leading-tight">Type</h2>
+                      <p className="text-black-to-gray">{props.type}</p>
+                    </div>
+                    <div>
+                      <h2  className="text-white-gold mt-0 mb-2 text-2xl font-medium leading-tight">Released date</h2>
+                      <p className="text-black-to-gray">{props.released}</p>
+                    </div>
+                    <div>
+                      <h2  className="text-white-gold mt-0 mb-2 text-2xl font-medium leading-tight">Runtime</h2>
+                      <p className="text-black-to-gray">{props.runtime}</p>
+                    </div>
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-white-gold background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => hola()}
                   >
                     Close
                   </button>
                   <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="bg-white-gold text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >

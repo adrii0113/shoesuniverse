@@ -50,7 +50,7 @@ export default function Header({}: Props) {
 
           }}
           className="py-10 mb-12 flex justify-between dark:text-white">
-            <h1 className="font-burtons text-xl">Shoes universe</h1>
+            <h1 className="font-burtons text-xl">movie finder</h1>
             <Topbarmenu></Topbarmenu>
             <ul className="flex items-center">
               <li>
