@@ -18,16 +18,11 @@ export default function Gridproducts () {
 
     // get products data from api and set it accordingly
     const storeMovies = async (title : String) => {
-        // const recibedMovies =  await getMovieByTitle(title);
-        // setMovies(recibedMovies)
-        // console.log(movies)
-        // return recibedMovies;
 
         const res = await axios.get(`http://www.omdbapi.com/?t=${title}&apikey=1d90c95a`)
         setMovies(
             res.data
         )
-        // console.log(res.data)
     }
 
   

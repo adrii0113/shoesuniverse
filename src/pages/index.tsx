@@ -1,28 +1,40 @@
 
 import React from "react";
-
+import { useState, useEffect } from "react"
 import { color, motion, useScroll } from "framer-motion"
-
-import deved from "../public/dev-ed-wave.png";
-
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { useState } from "react";
 
 // Components
 import Head from '@/components/Head';
 import Header from '@/components/Header';
 
+import { getExampleMovies, getTrendingContent } from "@/api/apicall";
 
 
-// import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import individualfeatures from '@/styles/individualfeatures.module.css';
+
 import Moviecarrousel from '@/components/Moviecarrousel';
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
-  const {scrollYProgress} = useScroll();
+  
+
+  const [movies,setMovies]  = useState([{}])
+ 
+
+  // useEffect(() => {
+  //   const getMoviesFromApi = async () => {
+  //     const recibedInfo = await getTrendingContent('all','day')
+  //     setMovies(
+  //       recibedInfo
+  //     )
+  //   }
+  //   getMoviesFromApi();
+  //   // console.log(movies)
+  //   // movies.map((movie) =>{console.log(movie.title)})
+    
+  // }, []);
+
+
   return (
     <div className="dark">
 
@@ -35,13 +47,22 @@ export default function Home() {
         <section className="min-h-screen">
           {/* HEADER */}
           <Header></Header>
+          <Moviecarrousel movie={movies}/>
 
         </section>
 
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-      <Moviecarrousel/>
-    </h1>
+    
+
+      {/* {
+        <ul>
+        {movies.map((movie) => (
+          // <li key={movie.id}> {movie}</li>
+          // <li key={movie.id}>{movie.name}</li>
+          <li>{movie.title}</li>
+        ))}
+      </ul>
+      } */}
+    
         
       </main>
     

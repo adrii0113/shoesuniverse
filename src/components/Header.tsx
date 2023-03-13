@@ -53,21 +53,9 @@ export default function Header({}: Props) {
             <h1 className="font-burtons text-xl">movie finder</h1>
             <Topbarmenu></Topbarmenu>
             <ul className="flex items-center">
-              <li>
-                {/* <BsFillMoonStarsFill
-                  onClick={() => setDarkMode(!darkMode)}
-                  className=" cursor-pointer text-2xl"
-                /> */}
-              </li>
+             
               
-              {/* <li>
-                <a
-                  className="bg-gradient-to-r from-white-gold text- to-white-gold text-white px-4 py-2 border-none rounded-md ml-8 hover:bg-black"
-                  href=""
-                >
-                  Shoescart
-                </a>
-              </li> */}
+              
             </ul>
           </motion.nav>
           </div>

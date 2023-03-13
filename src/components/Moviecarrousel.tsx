@@ -1,81 +1,159 @@
+import { useState, useEffect } from "react"
+import { getExampleMovies, getTrendingContent, getImagesFromAPI } from "@/api/apicall";
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from "pure-react-carousel";
+import { color, motion, useScroll } from "framer-motion"
+import "pure-react-carousel/dist/react-carousel.es.css";
 
-type MovieProps = {
+export default function Moviecarrousel (){
 
-    title : string,
-    actors : string,
-    awards: string,
-    country: string,
-    director: string,
-    language: string,
-    metascore: string,
-    plot: string,
-    production: string,
-    rated: string,
-    ratings : string[],
-    released : string,
-    type: string,
-    writer: string,
-    imdbID: string,
-    imdbRating: string,
-    runtime : string,
-    genre : string,
-    img : string,
-    year : string
+    
 
+    const [movies,setMovies]  = useState([{}])
+    const [movieImages,setMovieImages] = useState([{}]);
 
-}
-export default function Moviecarrousel (props: MovieProps){
+   
+    useEffect(() => {
+        const getMoviesFromApi = async () => {
+          const recibedInfo = await getTrendingContent('all','day')
+          setMovies(
+            recibedInfo.slice(0,10)
+          )
+        }
 
+        // const getMovieImages = async () => {
+        //     const recibedInfo = await getImagesFromAPI(movies.poster_path)
+        //     setMovieImages(
+        //       recibedInfo
+        //     )
+        //   }
+        
+        getMoviesFromApi();
+        // getMovieImages()
+        console.log(movieImages)
+        movies.map((movie) =>{
+            // getImagesFromAPI(movie.poster_path)
+            setMovieImages(movie.poster_path)
+            
+
+        })
+        
+      }, []);
     return (
-
-
-<div id="default-carousel" className="relative" data-carousel="slide">
-    
-    <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-       
-       
-        {/* <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></img>
-        </div> */}
         
-        {/* <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-2.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></img>
-        </div> */}
-        
-        {/* <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-3.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></img>
-        </div> */}
-       
-        {/* <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-4.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></img>
-        </div> */}
-      
-        {/* <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-5.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></img>
-        </div> */}
-    </div>
+        <div className="2xl:mx-auto 2xl:container flex justify-center">
+            <div className="2xl:px-20 px-6 py-12 w-full lg:w-4/5">
+                {/* Carousel for Small-Sized Screen */}
+                <CarouselProvider className="relative block sm:hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={3} visibleSlides={1} step={1} infinite={true}>
+                    <div className="js-flickity flex justify-center items-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="w-12 h-12 md:w-14 md:h-14 rounded-full flex justify-center items-center bg-white border border-gray-300 hover:bg-gray-400 absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="black" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <Slider>
+                            <Slide index={0}>
+                                <motion.div className="gallery-cell lg:mr-7 mr-6 lg:w-1/2 sm:w-96 w-full h-full  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}">
+                                    <div className="relative w-full h-full lg:block hidden">
+                                        <img src="https://i.ibb.co/VSsN4Jt/carousel-2.png" alt="sitting area" className="object-center object-cover w-full h-full" />
+                                        <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
+                                            <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1>
+                                        </div>
+                                    </div>
+                                    <div className="relative w-full h-full lg:hidden">
+                                        <img src="https://i.ibb.co/tMB5CZW/behzad-ghaffarian-nh-Wg-ZNV85-LQ-unsplash-1-3-1.png" alt="sitting area" className="object-center object-cover w-full h-full" />
+                                        <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
+                                            <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </Slide>
+                            
+                        </Slider>
+                        <ButtonNext role="button" aria-label="slide forward" className="w-12 h-12 md:w-14 md:h-14 rounded-full flex justify-center items-center bg-white border border-gray-300 hover:bg-gray-400 absolute z-30 right-0 mr-8 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" id="next">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="black" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonNext>
+                    </div>
+                </CarouselProvider>
+
+                {/* Carousel for Medium and Large-Sized Screen */}
+                <CarouselProvider className="relative hidden sm:block" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={3} visibleSlides={1} step={1} infinite={true} currentSlide={1}>
+                    <div className="js-flickity flex justify-center items-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="w-12 h-12 md:w-14 md:h-14 rounded-full flex justify-center items-center bg-white border border-gray-300 hover:bg-gray-400 absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="black" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <Slider className="carousel__sliderLarge">
+                            {
+                                movies.map((movie) => (
+                                    <Slide className="carousel__inner-slideLarge" index={0}>
+                                <motion.div className="gallery-cell w-full h-full" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                    <div className="relative w-full h-full lg:block hidden">
+                                        <img src={movie.title} alt="sitting area" className="object-center object-cover w-full h-full" />
+                                        <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
+                                            <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{movie.title ?movie.title: 'Movie undefined'}</h1>
+                                        </div>
+                                    </div>
+                                    <div className="relative w-full h-full lg:hidden">
+                                        <img src="https://i.ibb.co/tMB5CZW/behzad-ghaffarian-nh-Wg-ZNV85-LQ-unsplash-1-3-1.png" alt="sitting area" className="object-center object-cover w-full h-full" />
+                                        <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
+                                            <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </Slide>
+                            
+                                )
+                                )
+                            }
+                        </Slider>
+                        <ButtonNext role="button" aria-label="slide forward" className="w-12 h-12 md:w-14 md:h-14 rounded-full flex justify-center items-center bg-white border border-gray-300 hover:bg-gray-400 absolute z-30 right-0 mr-8 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" id="next">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="black" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonNext>
+                    </div>
+                </CarouselProvider>
+            </div>
+
+            <style>
+                {`
+                    .gallery-cell {
+                        height: 386px;
+                        padding-right:15px;
+                    }
+                    @media (min-width: 300px) and (max-width: 420px) {
+                        .gallery-cell {
+                            height: 286px !important;
+                            
+                        }
+                    }
+                    
+                    @media (max-width: 640px) {
+                        .gallery-cell {
+                            padding-right:0;
+                        }
+                    }
+
+                    .carousel__sliderLarge {
+                        padding-left: 20%;
+                        padding-right: 20%;
+                    }
+
+                    /* gives us the illusion of spaces between the slides */
+                    .carousel__inner-slideLarge {
+                        width: calc(100% - 20px);
+                        height: calc(100% - 20px);
+                        left: 10px;
+                        top: 10px;
+                        
+                    }
+                `}
+            </style>
+        </div>
     
-    <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-    {/* <!-- Slider controls --> */}
-    <button type="button" className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            <span className="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            <span className="sr-only">Next</span>
-        </span>
-    </button>
-</div>
 
 
     ) 
