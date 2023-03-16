@@ -30,7 +30,7 @@
     // This function return all the audivisual content that now a days is on trend
     export const getTrendingContent  = async (media_type: string, time_window: string) =>{
 
-        const baseUrl = `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${apiKey}`
+        const baseUrl = `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${process.env.API_KEY}`
         const res = await  axios.get(baseUrl)
         return res.data.results;
 

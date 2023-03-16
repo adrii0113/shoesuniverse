@@ -84,6 +84,11 @@ export const createSession = async (requestToken : string) =>{
     return res.data.session_id;
 
 
+}
+
+export const deleteSession = async () =>{
+
+    const deleteSessionUrl = `https://api.themoviedb.org/3/authentication/session?api_key=${apiKey}`
 
 }
 
