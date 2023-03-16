@@ -43,7 +43,7 @@
 
         const baseUrl = `https://image.tmdb.org/t/p/original${url}`
         const res = await axios.get(baseUrl);
-        console.log(res)
+        // console.log(res)
         return res.data;
     }
     

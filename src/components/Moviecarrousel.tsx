@@ -31,7 +31,7 @@ export default function Moviecarrousel (){
         // getMovieImages()
         console.log(movieImages)
         movies.map((movie) =>{
-            // getImagesFromAPI(movie.poster_path)
+            // getImagesFromAPI(movie.ss)
             setMovieImages(movie.poster_path)
             
 
@@ -91,7 +91,7 @@ export default function Moviecarrousel (){
                                     <Slide className="carousel__inner-slideLarge" index={0}>
                                 <motion.div className="gallery-cell w-full h-full" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                     <div className="relative w-full h-full lg:block hidden">
-                                        <img src={movie.title} alt="sitting area" className="object-center object-cover w-full h-full" />
+                                    {/* <img src={getImagesFromAPI(movie.poster_path)} alt="sitting area" className="object-center object-cover w-full h-full" /> */}
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
                                             <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{movie.title ?movie.title: 'Movie undefined'}</h1>
                                         </div>

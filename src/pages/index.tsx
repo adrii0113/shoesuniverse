@@ -1,25 +1,43 @@
 
 import React from "react";
+
+// Hooks
 import { useState, useEffect } from "react"
+
+// Dependencies
 import { color, motion, useScroll } from "framer-motion"
 
 // Components
 import Head from '@/components/Head';
 import Header from '@/components/Header';
-
-import { getExampleMovies, getTrendingContent } from "@/api/apicall";
-
-
-import styles from '@/styles/Home.module.css'
-
 import Moviecarrousel from '@/components/Moviecarrousel';
-// const inter = Inter({ subsets: ['latin'] })
+
+// Functions
+import { getExampleMovies, getTrendingContent } from "@/api/apicall"
+import { createSession, createV3RequestToken, aproveV3RequestToken } from "@/api/apiAuuthTmdb"
+// Auth imports
+
 
 export default function Home() {
   
 
   const [movies,setMovies]  = useState([{}])
- 
+  
+  useEffect(()=>{
+
+    
+    const initRequestToken = async () =>{
+      const reqToken = await createV3RequestToken()
+      // aproveV3RequestToken(reqToken);
+      setTimeout(()=>{
+
+        createSession(reqToken);
+      },10000)
+
+    }
+    initRequestToken()
+
+  })
 
   // useEffect(() => {
   //   const getMoviesFromApi = async () => {
@@ -50,19 +68,6 @@ export default function Home() {
           <Moviecarrousel movie={movies}/>
 
         </section>
-
-    
-
-      {/* {
-        <ul>
-        {movies.map((movie) => (
-          // <li key={movie.id}> {movie}</li>
-          // <li key={movie.id}>{movie.name}</li>
-          <li>{movie.title}</li>
-        ))}
-      </ul>
-      } */}
-    
         
       </main>
     
