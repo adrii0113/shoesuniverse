@@ -3,7 +3,9 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from "pure-re
 import { color, motion, useScroll } from "framer-motion"
 
 
-//
+
+//api imports
+import {getPopularSeries, getImagesFromAPI} from '@/api/apicall'
 
 // css
 import "pure-react-carousel/dist/react-carousel.es.css";
@@ -11,13 +13,36 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 export default function Populartvcarrousel () {
 
     const [populartvshows,setPopulartvshows]  = useState([{}])
+    
 
+    useEffect(() => {
+
+        const asingPopularShows = async () => {
+            const recibedInfo = await getPopularSeries()
+            setPopulartvshows(
+                recibedInfo
+            )
+        }
+
+        asingPopularShows()
+
+        console.log(populartvshows)
+    },[])
+
+
+    const getImages = async () => {
+        
+       const res = await getImagesFromAPI('/3FLHePl9Y3n4BidLVjIA9qSRDOE.jpg')
+        return res
+    }
 
     
 
     return(
 
         <div className="2xl:mx-auto 2xl:container flex justify-center">
+            {/* <button onClick={()=>getImagesFromAPI('/3FLHePl9Y3n4BidLVjIA9qSRDOE.jpg')}>SACAR IMGS</button> */}
+            {/* <img src={()=>getImages()} alt="" /> */}
             <div className="2xl:px-20 px-6 py-12 w-full lg:w-4/5">
                 {/* Carousel for Small-Sized Screen */}
                 <CarouselProvider className="relative block sm:hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={3} visibleSlides={1} step={1} infinite={true}>
@@ -64,13 +89,13 @@ export default function Populartvcarrousel () {
                         </ButtonBack>
                         <Slider className="carousel__sliderLarge">
                             {
-                                movies.map((movie) => (
+                                populartvshows.map((populartvshow) => (
                                     <Slide className="carousel__inner-slideLarge" index={0}>
                                 <motion.div className="gallery-cell w-full h-full" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                     <div className="relative w-full h-full lg:block hidden">
-                                    {/* <img src={getImagesFromAPI(movie.poster_path)} alt="sitting area" className="object-center object-cover w-full h-full" /> */}
+                                    <img src={`https://image.tmdb.org/t/p/original${populartvshow.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
-                                            <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{movie.title ?movie.title: 'Movie undefined'}</h1>
+                                            <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{populartvshow.name ?populartvshow.name: 'Movie undefined'}</h1>
                                         </div>
                                     </div>
                                     <div className="relative w-full h-full lg:hidden">

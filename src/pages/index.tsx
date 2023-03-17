@@ -11,7 +11,7 @@ import { color, motion, useScroll } from "framer-motion"
 import Head from '@/components/Head';
 import Header from '@/components/Header';
 import Moviecarrousel from '@/components/Moviecarrousel';
-
+import Populartvcarrousel from '@/components/Populartvcarrousel';
 // Functions
 import { getExampleMovies, getTrendingContent } from "@/api/apicall"
 import { createSession, createV3RequestToken, aproveV3RequestToken } from "@/api/apiAuuthTmdb"
@@ -25,27 +25,25 @@ export default function Home() {
   const [movies,setMovies]  = useState([{}])
   const [session_id,setSession_id] = useState()
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
     
-    const initRequestToken = async () =>{
-      const reqToken = await createV3RequestToken()
-      // aproveV3RequestToken(reqToken);
-      setTimeout(()=>{
+  //   const initRequestToken = async () =>{
+  //     const reqToken = await createV3RequestToken()
+  //     // aproveV3RequestToken(reqToken);
+  //     setTimeout(()=>{
 
-        createSession(reqToken);
-      },10000)
-      console.log(reqToken)
-      console.log(process.env.API_KEY)
+  //       createSession(reqToken);
+  //     },10000)
+  //     console.log(reqToken)
+  //     console.log(process.env.API_KEY)
 
-    }
-    initRequestToken()
+  //   }
+  //   initRequestToken()
    
-    // getAccountDetails(JSON.stringify(localStorage.getItem('tmdbsession_id')))
-    // const session = JSON.stringify(localStorage.getItem('tmdbsession_id')!)
-    // console.log(session)
+  
 
-  })
+  // })
 
   // useEffect(() => {
   //   const getMoviesFromApi = async () => {
@@ -74,6 +72,7 @@ export default function Home() {
           {/* HEADER */}
           <Header></Header>
           <Moviecarrousel movie={movies}/>
+          <Populartvcarrousel/>
           <button onClick={()=>getAccountDetails()}>GET ACCOUNT DETAILS</button>
         </section>
         

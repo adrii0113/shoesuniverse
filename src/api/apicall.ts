@@ -43,9 +43,24 @@
 
         const baseUrl = `https://image.tmdb.org/t/p/original${url}`
         const res = await axios.get(baseUrl);
-        // console.log(res)
+        console.log(res)
         return res.data;
     }
+
+
+
+    // function return popular series
+
+    export const getPopularSeries = async () => {
+
+        const url = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`
+        const res = await axios.get(url)
+
+        return res.data.results;
+    }
+
+
+   
     
 
 
@@ -55,6 +70,7 @@
         getDataByType,
         getExampleMovies,
         getTrendingContent,
-        getImagesFromAPI
+        getImagesFromAPI,
+        getPopularSeries
     }
   
