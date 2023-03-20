@@ -14,16 +14,19 @@ import Moviecarrousel from '@/components/Moviecarrousel';
 import Populartvcarrousel from '@/components/Populartvcarrousel';
 // Functions
 import { getExampleMovies, getTrendingContent } from "@/api/apicall"
-import { createSession, createV3RequestToken, aproveV3RequestToken } from "@/api/apiAuuthTmdb"
 import {getAccountDetails} from "@/api/apiaccountcalls"
+
 // Auth imports
+import { createSession, createV3RequestToken, aproveV3RequestToken } from "@/api/apiAuuthTmdb"
+
+import YouTube, { YouTubeProps } from 'react-youtube';
 
 
 export default function Home() {
   
 
   const [movies,setMovies]  = useState([{}])
-  const [session_id,setSession_id] = useState()
+
 
   // useEffect(()=>{
 
@@ -44,19 +47,25 @@ export default function Home() {
   
 
   // })
+  function Example() {
+    const onPlayerReady: YouTubeProps['onReady'] = (event) => {
+      // access to player in all event handlers via event.target
+      event.target.pauseVideo();
+    }
+  
+    const opts: YouTubeProps['opts'] = {
+      height: '390',
+      width: '640',
+      playerVars: {
+       // https://www.youtube.com/watch?v=5iiF_hxhLB4
+        autoplay: 1,
+      },
+    };
+  
+    return <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onPlayerReady} />;
+  }
 
-  // useEffect(() => {
-  //   const getMoviesFromApi = async () => {
-  //     const recibedInfo = await getTrendingContent('all','day')
-  //     setMovies(
-  //       recibedInfo
-  //     )
-  //   }
-  //   getMoviesFromApi();
-  //   // console.log(movies)
-  //   // movies.map((movie) =>{console.log(movie.title)})
-    
-  // }, []);
+ 
 
 
   return (
@@ -71,9 +80,12 @@ export default function Home() {
         <section className="min-h-screen">
           {/* HEADER */}
           <Header></Header>
-          <Moviecarrousel movie={movies}/>
+          <Moviecarrousel/>
           <Populartvcarrousel/>
           <button onClick={()=>getAccountDetails()}>GET ACCOUNT DETAILS</button>
+          {
+            Example()
+          }
         </section>
         
       </main>
