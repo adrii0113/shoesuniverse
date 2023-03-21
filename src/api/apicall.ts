@@ -60,6 +60,18 @@
     }
 
 
+    // get all movies
+
+    export const getAllMovies = async (number: number) => {
+
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&page=${number}`
+        const res = await axios.get(url)
+
+
+        console.log(res.data)
+        return res.data
+    }
+
    
     
 
@@ -71,6 +83,7 @@
         getExampleMovies,
         getTrendingContent,
         getImagesFromAPI,
-        getPopularSeries
+        getPopularSeries,
+        getAllMovies
     }
   

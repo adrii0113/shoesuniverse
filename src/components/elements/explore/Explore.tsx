@@ -1,18 +1,46 @@
 import { color, motion, useScroll } from "framer-motion"
+import { useState, useEffect } from "react"
+import axios from "axios";
+
+import { getAllMovies } from "@/api/apicall"
 
 export default function Explore(){
 
 
 
-    window.addEventListener("load", function(event) {
-        document.querySelector('[data-dropdown-toggle="dropdown"]').click();
-      });
+    // window.addEventListener("load", function(event) {
+    //     document.querySelector('[data-dropdown-toggle="dropdown"]').click();
+    //   });
+
+    const [movies,setMovies] = useState([{}])
+    const [increment,setIncrement] = useState(1)
+
+    // useEffect(()=>{
+
+    //     setIncrement(increment<100 ? increment + 1 : increment-100    )
+
+
+
+    // },[movies]) 
+    useEffect(()=>{
+
+        const getAllMoviesFromApi = async() => {
+            const recibedMovies = await getAllMovies(increment)
+            setMovies(recibedMovies)
+            
+        }
+
+        getAllMoviesFromApi()
+        console.log(movies)
+        
+
+    },[])
 
     return (
 
         <div>
 
-            <div className="flex items-center justify-center p-4">
+            {/* <div className="flex items-center justify-center p-4">
                 <button id="dropdownDefault" data-dropdown-toggle="dropdown"
                     className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     type="button">
@@ -40,7 +68,7 @@ export default function Explore(){
 
                     </ul>
                 </div>
-            </div>
+            </div> */}
 
             <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
