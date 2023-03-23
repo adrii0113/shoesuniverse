@@ -1,7 +1,7 @@
 
 import Head from '@/components/Head';
 import Header from '@/components/Header';
-import ExploreComponet from '@/components/elements/explore/explore';
+import ExploreComponet from '@/components/elements/explore/Explore';
 export default function Explore(){
 
 
