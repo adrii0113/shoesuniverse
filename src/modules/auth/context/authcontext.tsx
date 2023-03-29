@@ -12,7 +12,7 @@ interface UserType {
   uid: string | null;
 }
 
-const AuthContext = createContext({});
+export const AuthContext = createContext({});
 
 export const useAuth = () => useContext<any>(AuthContext);
 

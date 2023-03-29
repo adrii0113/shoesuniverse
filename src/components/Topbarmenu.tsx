@@ -1,12 +1,17 @@
 import Link from 'next/link'
 
-import { useState, useEffect } from "react"
-
+import { useState, useEffect,useContext } from "react"
+import { AuthContext } from "@/modules/auth/context/authcontext";
+import { useAuth } from "@/modules/auth/context/authcontext";
+import { useRouter } from "next/router";
 // api imports
 import { createSession, createV3RequestToken, aproveV3RequestToken } from "@/api/apiAuuthTmdb"
 
 export default function Topbarmenu (){
 
+
+    const { user } = useContext(AuthContext);
+    const { logOut } = useAuth();
     const initUserSession = async () => {
         const reqToken = await createV3RequestToken()
 
@@ -37,7 +42,7 @@ export default function Topbarmenu (){
                     </li>
                     
                     <li>
-                        <Link href="/contact" className="block py-2 pr-4 pl-3  border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</Link>
+                        <Link href="/contact" className="block py-2 pr-4 pl-3  border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{user.email}</Link>
                     </li>
 
                     <li>
@@ -48,6 +53,19 @@ export default function Topbarmenu (){
                     <button type="button" className="text-white bg-white-gold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-white-gold dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={()=>initUserSession()}>Sign up</button>
                     {/* <button onClick={()=>initUserSession()}>Sign up</button> */}
                     </li>
+
+                    
+
+                        {user ? 
+                            <button type="button" className="text-white bg-white-gold hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-white-gold dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={()=> logOut()}>
+
+                            Log out
+                            </button>
+                            
+                            
+                         : ""}
+
+                    
                 </ul>
             </div>
     )
