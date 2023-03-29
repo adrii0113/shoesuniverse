@@ -6,7 +6,7 @@ export default function Register (){
     return (
 
         
-            <div>
+            <div className="dark">
                 <Registerform></Registerform>
             </div>
 

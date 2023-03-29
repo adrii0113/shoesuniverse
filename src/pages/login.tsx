@@ -5,7 +5,7 @@ export default function Login(){
 
 
     return(
-        <div>
+        <div className="dark">
             <Loginform></Loginform>
         </div>
     )
