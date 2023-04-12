@@ -5,6 +5,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "typeRoots": ["./src/types", "./types"],
+    
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
