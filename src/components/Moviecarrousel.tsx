@@ -94,8 +94,8 @@ export default function Moviecarrousel (){
                         </ButtonBack>
                         <Slider className="carousel__sliderLarge">
                             {
-                                movies.map((movie) => (
-                                    <Slide className="carousel__inner-slideLarge" index={0}>
+                                movies.map((movie, index) => (
+                                    <Slide className="carousel__inner-slideLarge" index={0} key={index}>
                                 <motion.div className="gallery-cell w-full h-full" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                     <div className="relative w-full h-full lg:block hidden">
                                     <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
