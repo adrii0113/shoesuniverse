@@ -28,15 +28,9 @@ export default function Moviecarrousel (){
         //   }
         
         getMoviesFromApi();
-        // getMovieImages()
-        console.log(movies)
-        // movies.map((movie) =>{
-        //     // getImagesFromAPI(movie.ss)
-        //     setMovieImages(movie.poster_path)
-            
-
-        // })
         
+        console.log(movies)
+       
       }, []);
     return (
         
@@ -59,8 +53,8 @@ export default function Moviecarrousel (){
                         <Slider>
                             {
 
-                            movies.map((movie)=>(
-                                <Slide index={0}>
+                            movies.map((movie, index)=>(
+                                <Slide index={0} key={index}>
                                 <motion.div className="gallery-cell lg:mr-7 mr-6 lg:w-1/2 sm:w-96 w-full h-full  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}">
                                     <div className="relative w-full h-full lg:block hidden">
                                     <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
