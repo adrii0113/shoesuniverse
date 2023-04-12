@@ -91,6 +91,7 @@ export default function Gridproducts () {
                      writer={movies.Writer}
                      imdbRating={movies.imdbRating}
                      type={movies.Type}
+                     
 
                     />
                     : null

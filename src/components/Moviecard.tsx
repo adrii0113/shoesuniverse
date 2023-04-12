@@ -15,7 +15,7 @@ type MovieProps = {
     released : string,
     type: string,
     writer: string,
-    imdbID: string,
+    // imdbID: string,
     imdbRating: string,
     runtime : string,
     genre : string,
