@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 // import { auth } from "../config/firebase";
 import { auth } from "../../../../firebaseConfig"
@@ -51,8 +52,15 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     await signOut(auth);
   };
 
+  const sendResetEmail = async (email: string) => {
+
+    return sendPasswordResetEmail(auth,email)
+  }
+
+
+
   return (
-    <AuthContext.Provider value={{ user, signUp, logIn, logOut }}>
+    <AuthContext.Provider value={{ user, signUp, logIn, logOut, sendResetEmail }}>
       {loading ? null : children}
     </AuthContext.Provider>
   );

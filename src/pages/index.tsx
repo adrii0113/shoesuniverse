@@ -83,9 +83,7 @@ export default function Home() {
           <Moviecarrousel/>
           <Populartvcarrousel/>
           <button onClick={()=>getAccountDetails()}>GET ACCOUNT DETAILS</button>
-          {
-            Example()
-          }
+          
         </section>
         
       </main>
