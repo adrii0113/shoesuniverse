@@ -12,6 +12,7 @@ import Head from '@/components/Head';
 import Header from '@/components/Header';
 import Moviecarrousel from '@/components/Moviecarrousel';
 import Populartvcarrousel from '@/components/Populartvcarrousel';
+import Footer from "@/components/Footer";
 // Functions
 import { getExampleMovies, getTrendingContent } from "@/api/apicall"
 import {getAccountDetails} from "@/api/apiaccountcalls"
@@ -74,18 +75,19 @@ export default function Home() {
       {/* HEAD */}
       <Head></Head>
 
-      <main className=" bg-black-to-gray md:px-20 lg:px-40">
+          <Header></Header>
+      <main className=" bg-black-to-gray md:px-20 lg:px-17">
      
 
         <section className="min-h-screen">
           {/* HEADER */}
-          <Header></Header>
           <Moviecarrousel/>
           <Populartvcarrousel/>
           <button onClick={()=>getAccountDetails()}>GET ACCOUNT DETAILS</button>
           
         </section>
         
+        <Footer></Footer>
       </main>
     
     </div>

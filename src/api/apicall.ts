@@ -74,7 +74,16 @@
 
    
     
+    // multi search, function to search for movies and tv shows
+    export const multiSearch = async (query: String) => {
 
+        const url =`https://api.themoviedb.org/3/search/multi?api_key=af17d9c8e63d1b73ec66f0e803080f77&query=${query}`
+        const res = await axios.get(url)
+
+        // console.log(res.data.results)
+        return res.data.results
+        
+    }
 
 
     module.exports = {
@@ -84,6 +93,7 @@
         getTrendingContent,
         getImagesFromAPI,
         getPopularSeries,
-        getAllMovies
+        getAllMovies,
+        multiSearch
     }
   
