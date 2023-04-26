@@ -1,3 +1,6 @@
+/* netflix font import */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .main {
   display: flex;
   flex-direction: column;
@@ -78,6 +81,11 @@
   align-items: center;
   position: relative;
   padding: 4rem 0;
+}
+
+
+.font-bebas {
+  font-family: 'Bebas Neue', cursive;
 }
 
 .center::before {

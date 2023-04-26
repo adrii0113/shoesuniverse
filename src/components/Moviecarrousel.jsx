@@ -35,10 +35,10 @@ export default function Moviecarrousel (){
     return (
         
         <div className="2xl:mx-auto 1xl:container flex justify-center">
-            <div className="px-10 py-12">
+            <div className="px-1 py-5">
                 {/* Carousel for Small-Sized Screen */}
                 <div>
-                <h3 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">
+                <h3 className="mt-0 mb-2 text-3xl leading-tight text-primary font-bebas">
                     Popular movies
                 </h3>
                 </div>

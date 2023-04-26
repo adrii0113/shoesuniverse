@@ -20,6 +20,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Topbarmenu.jsx", "src/components/Header.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Topbarmenu.jsx", "src/components/Header.jsx", "src/components/Gridproducts.jsx"],
   "exclude": ["node_modules"]
 }

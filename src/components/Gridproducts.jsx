@@ -76,7 +76,7 @@ export default function Gridproducts () {
             movies.map((movie, index) =>(
                 
 
-                <div class="max-w-sm bg-white   rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-2 my-2">
+                <div key={index} class="max-w-sm bg-white   rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-2 my-2">
                     <a href="#">
                         <img class="rounded-t-lg" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" />
                     </a>

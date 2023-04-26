@@ -34,10 +34,10 @@ export default function Populartvcarrousel () {
 
     return(
 
-        <div className="2xl:mx-auto 2xl:container flex justify-center">
+        <div className="2xl:mx-auto 1xl:container flex justify-center">
             {/* <button onClick={()=>getImagesFromAPI('/3FLHePl9Y3n4BidLVjIA9qSRDOE.jpg')}>SACAR IMGS</button> */}
             {/* <img src={()=>getImages()} alt="" /> */}
-            <div className="px-10 py-12">
+            <div className="px-1 py-12">
                 {/* Carousel for Small-Sized Screen */}
                 <CarouselProvider className="relative block sm:hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={3} visibleSlides={1} step={1} infinite={true} naturalSlideHeight={2}>
                     <div className="js-flickity flex justify-center items-center">

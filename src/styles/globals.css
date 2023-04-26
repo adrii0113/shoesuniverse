@@ -4,7 +4,8 @@
 /* @import './base.css'; */
 @import 'tailwindcss/utilities';
 
-
+/* netflix font import */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -18,7 +19,7 @@
 
   --primary: #ac8136;
   --secondary: #ac8136 ;
-
+  --font-bebas:'Bebas'
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -92,6 +93,9 @@
   /* scrollbar */
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--primary);
+}
+.font-bebas {
+  font-family: 'Bebas Neue', cursive;
 }
 
 html,

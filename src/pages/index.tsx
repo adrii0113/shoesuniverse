@@ -75,9 +75,9 @@ export default function Home() {
       {/* HEAD */}
       <Head></Head>
 
-          <Header></Header>
       <main className=" bg-black-to-gray md:px-20 lg:px-17">
      
+          <Header></Header>
 
         <section className="min-h-screen">
           {/* HEADER */}
