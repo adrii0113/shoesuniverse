@@ -1,3 +1,11 @@
+## Moviefinder
+
+## Project description
+Aplication created to help user to find information of her favourites movies, tvshows, series
+## Tech stack
+For this app i used in first instance i used typescript for back and front, during my develop work i switch some parts of the projects to native javascript to resolve some problems, i use NextJs as a principal framework, tailwindcss for style and react for front part,finally i use firebase for auth users in the app and store the user info.
+Deploy was made in netlify.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
