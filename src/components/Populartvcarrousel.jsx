@@ -75,7 +75,7 @@ export default function Populartvcarrousel () {
 
                 {/* Carousel for Medium and Large-Sized Screen */}
                 <div>
-                <h3 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">
+                <h3 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary font-bebas">
                     Popular shows
                 </h3>
                 </div>

@@ -3,7 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import { useAuth } from "@/modules/auth/context/authcontext";
 import { useRouter } from "next/router";
-
+import Link from "next/link";
 
 interface LoginType {
     email: string;
@@ -70,12 +70,12 @@ export default function Forfotpass () {
 
 
                   <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
-
-
-
                   
+
               </form>
+              
               </FormProvider>
+              <button className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"><Link href="/login">Back to login</Link></button>
           </div>
       </div>
   </div>
