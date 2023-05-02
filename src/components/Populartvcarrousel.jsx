@@ -47,23 +47,29 @@ export default function Populartvcarrousel () {
                             </svg>
                         </ButtonBack>
                         <Slider>
-                            <Slide index={0}>
+                            
+                        {
+                            populartvshows.map((populartvshow, index) => (
+                            
+                            <Slide index={0} key={index}>
                                 <motion.div className="gallery-cell lg:mr-7 mr-6 lg:w-1/2 sm:w-96 w-full h-full  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}">
                                     <div className="relative w-full h-full lg:block hidden">
-                                        <img src="https://i.ibb.co/VSsN4Jt/carousel-2.png" alt="sitting area" className="object-center object-cover w-full h-full" />
+                                        <img src={`https://image.tmdb.org/t/p/w300${populartvshow.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
                                             {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1> */}
                                         </div>
                                     </div>
                                     <div className="relative w-full h-full lg:hidden">
-                                        <img src="https://i.ibb.co/tMB5CZW/behzad-ghaffarian-nh-Wg-ZNV85-LQ-unsplash-1-3-1.png" alt="sitting area" className="object-center object-cover w-full h-full" />
+                                        <img src={`https://image.tmdb.org/t/p/w300${populartvshow.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
                                             {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1> */}
                                         </div>
                                     </div>
                                 </motion.div>
                             </Slide>
-                            
+                            ))
+                        }
+                    
                         </Slider>
                         <ButtonNext role="button" aria-label="slide forward" className="w-12 h-12 md:w-14 md:h-14 rounded-full flex justify-center items-center bg-white border border-gray-300 hover:bg-gray-400 absolute z-30 right-0 mr-8 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" id="next">
                             <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,13 +98,13 @@ export default function Populartvcarrousel () {
                                     <Slide className="carousel__inner-slideLarge" index={0} key={index}>
                                 <motion.div className="gallery-cell w-full h-full" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                     <div className="relative w-full h-full lg:block hidden">
-                                    <img src={`https://image.tmdb.org/t/p/original${populartvshow.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
+                                    <img src={`https://image.tmdb.org/t/p/w1280${populartvshow.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
                                             {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{populartvshow.name ?populartvshow.name: 'Movie undefined'}</h1> */}
                                         </div>
                                     </div>
                                     <div className="relative w-full h-full lg:hidden">
-                                        <img src="https://i.ibb.co/tMB5CZW/behzad-ghaffarian-nh-Wg-ZNV85-LQ-unsplash-1-3-1.png" alt="sitting area" className="object-center object-cover w-full h-full" />
+                                        <img src={`https://image.tmdb.org/t/p/w1280${populartvshow.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
                                             {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1> */}
                                         </div>
