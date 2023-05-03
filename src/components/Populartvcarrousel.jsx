@@ -52,7 +52,7 @@ export default function Populartvcarrousel () {
                             populartvshows.map((populartvshow, index) => (
                             
                             <Slide index={0} key={index}>
-                                <motion.div className="gallery-cell lg:mr-7 mr-6 lg:w-1/2 sm:w-96 w-full h-full  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}">
+                                <motion.div className="px-1   lg:mr-7 mr-6 lg:w-1/2 sm:w-96 w-full h-full  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}">
                                     <div className="relative w-full h-full lg:block hidden">
                                         <img src={`https://image.tmdb.org/t/p/w300${populartvshow.poster_path}`} alt="sitting area" className="object-center object-cover w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">

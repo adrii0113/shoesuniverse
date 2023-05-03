@@ -12,7 +12,7 @@ import { BsFillMoonStarsFill } from "react-icons/bs";
 // COMPONENTS
 import Topbar from '@/components/Topbarmenu';
 import Topbarmenu from '@/components/Topbarmenu';
-
+import {logo} from './../public/movie-city.svg'
 
 // video & img
 
@@ -70,33 +70,33 @@ export default function Header() {
             </ul>
           </motion.nav> */}
          <nav class="bg-black-to-gray mb-10 py-10">
-			    <div class=" mx-auto px-4">
+			    <div class=" mx-auto">
 				    <div class="flex justify-between">
 					<div class="flex space-x-7">
 						<div>
-						
-							<a href="#" class="flex items-center py-4 px-2">
-								<img src="logo.png" alt="Logo" class="h-8 w-8 mr-2"></img>
-								<span class="font-semibold text-gray-500 text-lg">Navigation</span>
-							</a>
+		  				
+							<Link href="#" class="flex items-center py-4 px-2">
+								<img src="https://flowbite.com/docs/images/logo.svg" alt="" class="h-8 w-8 mr-2"></img>
+								<span class="font-semibold text-gray-500 text-lg">Movie Finder</span>
+							</Link>
 						</div>
 					
 						<div class="hidden md:flex items-center space-x-1">
-							<a href="" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Services</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact Us</a>
+							<Link href="/" class="py-4 px-2 text-white-gold border-b-4 border-white-gold font-semibold ">Home</Link>
+							<Link href="/Shop" class="py-4 px-2 text-gray-500 font-semibold hover:text-white-gold transition duration-300">Discover</Link>
+							<Link href="/explore" class="py-4 px-2 text-gray-500 font-semibold hover:text-white-gold transition duration-300">Explore</Link>
+							
 						</div>
 					</div>
 			
 					<div class="hidden md:flex items-center space-x-3 ">
-						<a href="" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
-						<a href="" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
+						<Link href="/login" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-white-gold hover:text-white transition duration-300">Log In</Link>
+						<Link href="/register" class="py-2 px-2 font-medium text-white bg-white-gold rounded hover:bg-white-gold transition duration-300">Sign Up</Link>
 					</div>
 					
 					<div class="md:hidden flex items-center">
 						<button onClick={()=>btnHandler()} class="outline-none mobile-menu-button">
-						<svg class=" w-6 h-6 text-gray-500 hover:text-green-500 "
+						<svg class=" w-6 h-6 text-gray-500 hover:text-white-gold"
 							x-show="!showMenu"
 							fill="none"
 							stroke-linecap="round"
@@ -114,10 +114,10 @@ export default function Header() {
 			
 			<div class="hidden mobile-menu">
 				<ul class="">
-					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
-					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
-					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
+					<li class="active"><Link href="/" class="block text-sm px-2 py-4 text-white bg-white-gold font-semibold">Home</Link></li>
+					<li><Link href="/Shop" class="block text-sm px-2 py-4 hover:bg-white-gold transition duration-300">Discover</Link></li>
+					<li><Link href="/explore" class="block text-sm px-2 py-4 hover:bg-white-gold transition duration-300">Explore</Link></li>
+					<li><Link href="/contact" class="block text-sm px-2 py-4 hover:bg-white-gold transition duration-300">Contact Us</Link></li>
 				</ul>
 			</div>
 			
