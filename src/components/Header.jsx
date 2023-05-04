@@ -69,7 +69,7 @@ export default function Header() {
               
             </ul>
           </motion.nav> */}
-         <nav class="bg-black-to-gray mb-10 py-10">
+         <nav class="bg-black-to-gray mb-10 py-6 sm:mr-10 mr-6">
 			    <div class=" mx-auto">
 				    <div class="flex justify-between">
 					<div class="flex space-x-7">

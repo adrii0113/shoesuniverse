@@ -38,9 +38,9 @@ export default function Gridproducts () {
    
     return (
         
-        <div className="container my-12 mx-auto px-4 md:px-12">
-        {/* <h2>Movie/series finder</h2> */}
-        <div className="-mx-20 lg:-mx-14">
+        <div className="my-10 mx-20 mb-10 py-10 px-1 md:px-0">
+        
+        <div className="-mx-10 lg:-mx-14">
 
         <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-white-gold from-black-to-gray">Movie finder</span> Type your movie here</h1>
         <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400"></p>
@@ -53,24 +53,24 @@ export default function Gridproducts () {
         </select> */}
 
            
-    {/* INIT SEARCHBAR */}
-    <form className="reflex items-center -mx-20 lg:-mx-20">   
-        <label htmlFor="voice-search" className="sr-only">Search</label>
+    
+     <form className="reflex items-center lg:-mx-16">   
+        <label className="sr-only">Search</label>
         <div className="relative w-full">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
         </div>
-        <input type="text" id="voice-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search movies,series..." required onChange={(value) => storeMovies(value.target.value)}></input>
+        <input type="text" className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  " placeholder="Search movies,series..." required onChange={(value) => storeMovies(value.target.value)}></input>
         
         
     </div>
-    {/* <button type="submit" className="inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-white-gold rounded-lg border border-white-gold hover:bg-white-gold focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-white-gold dark:hover:bg-white-gold dark:focus:ring-white-gold">
-        <svg aria-hidden="true" className="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>Search
-    </button> */}
-        </form>
-    {/* END SEARCHBAR */}
     
-    <div className="flex flex-wrap -mx-20 lg:-mx-20">
+        </form> 
+
+    
+    
+    
+    <div className="flex flex-wrap -mx-2- lg:-mx-64 justify-center">
         
         {
             movies.length > 1 ?
@@ -78,7 +78,7 @@ export default function Gridproducts () {
             movies.map((movie, index) =>(
                 
 
-                <div key={index} class="max-w-sm bg-white   rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-2 my-2">
+                <div key={index} class="lg:w-1/5 md:max-w-lg sm:w-full bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-2 my-2">
                     <a href="#">
                         <img class="rounded-t-lg" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" />
                     </a>

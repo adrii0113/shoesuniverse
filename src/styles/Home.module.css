@@ -181,7 +181,7 @@
   }
 }
 
-/* Mobile */
+/* Mobile
 @media (max-width: 700px) {
   .content {
     padding: 4rem;
@@ -256,7 +256,7 @@
     );
     z-index: 1;
   }
-}
+} */
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {

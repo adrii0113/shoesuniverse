@@ -14,15 +14,15 @@ export default function Shop (){
         <div>
             <Head></Head>
 
-            <main className="bg-black-to-gray md:px-20 lg:px-40">
+            <main className="bg-black-to-gray md:px-20 lg:px-17">
 
                 <section className="min-h-screen">
 
                     {/* HEADER */}
                     <Header></Header>
-                    <article>
-                            <Gridproducts></Gridproducts>
-                    </article>
+                    
+                    <Gridproducts></Gridproducts>
+                    
                 </section>
 
 
