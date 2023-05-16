@@ -86,6 +86,46 @@
     }
 
 
+    // get top rated movies
+    export const getTopRatedMovies = async () => {
+        const url =`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`
+        const res = await axios.get(url);
+
+        // console.log(res.data.results)
+        return res.data
+    }
+
+
+
+    // get upcoming movies
+
+
+
+    export const getUpcomingMovies  = async (media_type: string, time_window: string) =>{
+
+        // const baseUrl = `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${process.env.API_KEY}`
+
+
+        const baseUrl  = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US&page=1`
+        const res = await  axios.get(baseUrl)
+        return res.data.results;
+
+    }
+
+
+
+    // get a especific tv show
+
+    export const getEscpecificShow = async (query: string) => {
+
+        const baseUrl = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
+
+        const res = await axios.get(baseUrl)
+
+        return res.data.results;
+
+    }
+
     module.exports = {
         getMovieByTitle,
         getDataByType,
@@ -94,6 +134,9 @@
         getImagesFromAPI,
         getPopularSeries,
         getAllMovies,
-        multiSearch
+        multiSearch,
+        getTopRatedMovies,
+        getUpcomingMovies,
+        getEscpecificShow
     }
   
