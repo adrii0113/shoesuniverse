@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 // api
 import {multiSearch, getSimilarShows} from "@/api/apicall";
 
-export default function (props) {
+export default function Movieinfo (props) {
 
 
 
