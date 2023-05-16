@@ -126,6 +126,19 @@
 
     }
 
+
+    // get similar movies 
+
+    export const getSimilarShows = async ( mediaType: number, query: string,) => {
+
+        const baseUrl = `https://api.themoviedb.org/3/${mediaType}/${query}/recommendations?api_key=${process.env.API_KEY}&language=en-US&page=1`
+
+        const res = await axios.get(baseUrl)
+
+        return res.data.results;
+
+    }
+
     module.exports = {
         getMovieByTitle,
         getDataByType,
@@ -137,6 +150,7 @@
         multiSearch,
         getTopRatedMovies,
         getUpcomingMovies,
-        getEscpecificShow
+        getEscpecificShow,
+        getSimilarShows
     }
   
