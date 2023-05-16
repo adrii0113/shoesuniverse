@@ -15,7 +15,7 @@ export default function Mostratedmovies (){
 
         const asignMovies = async () => {
             const breakingbadInfo = await getEscpecificShow('Breaking bad')
-            // console.log(breakingbadInfo[0])
+            console.log(breakingbadInfo[0])
             
 
 

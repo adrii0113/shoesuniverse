@@ -139,6 +139,20 @@
 
     }
 
+
+
+    export const getCredits = async (query: number) => {
+
+        const baseUrl = `https://api.themoviedb.org/3/movie/${query}/credits?api_key=${process.env.API_KEY}`
+
+
+        const res = await axios.get(baseUrl)
+
+        return res.data
+
+
+    }
+
     module.exports = {
         getMovieByTitle,
         getDataByType,
@@ -151,6 +165,7 @@
         getTopRatedMovies,
         getUpcomingMovies,
         getEscpecificShow,
-        getSimilarShows
+        getSimilarShows,
+        getCredits
     }
   

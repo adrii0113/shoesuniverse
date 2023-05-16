@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 
 
 // api
-import {multiSearch, getSimilarShows} from "@/api/apicall";
+import {multiSearch, getSimilarShows, getCredits} from "@/api/apicall";
 
 export default function Movieinfo (props) {
 
@@ -14,6 +14,7 @@ export default function Movieinfo (props) {
 
     const [movie,setMovie]  = useState({})
     const [similarMovies,setSimilarMovies]  = useState([{}])
+    const [credits,setCredits] = useState([{}])
 
     const test = (e) => {
         
@@ -36,7 +37,7 @@ export default function Movieinfo (props) {
 
         const getInfoFromApi = async () => {
             const recibedInfo = await multiSearch(name)
-            console.log(recibedInfo[0].id)
+            console.log(recibedInfo[0])
             setMovie(recibedInfo[0])
         }
         getInfoFromApi()
@@ -51,14 +52,22 @@ export default function Movieinfo (props) {
             const getSimilarMoviesFromApi =  async () => {
 
                 const recibedInfo = await getSimilarShows(movie.media_type, movie.id)
+                const creditsFromApo = await getCredits(movie.id)
                 setSimilarMovies(recibedInfo.slice(0,10))
+                setCredits(creditsFromApo.cast.slice(0,20))
                 console.log(recibedInfo.slice(0,10))
             }
             getSimilarMoviesFromApi()
           
-
+            
           
     },[movie])
+
+    const getcreditsFromApi = async () => {
+
+        console.log(credits)
+        
+    }
     return (
 
 
@@ -95,9 +104,22 @@ export default function Movieinfo (props) {
                             {
                                 similarMovies.map((movie, index) =>(
                                     <div key={index}>
-                                        {movie.name}
+                                        {movie.name||movie.original_title}
                                     </div>
                                 ))
+
+                                
+                            }
+
+                            {
+                                <div>
+
+                                    {credits.map((credit, index) =>(
+                                        <div key={index}>
+                                            {credit.original_name}
+                                        </div>
+                                    ))}
+                                </div>
                             }
                         </div>
                     </div>
@@ -105,7 +127,7 @@ export default function Movieinfo (props) {
                     
                 </section>
 
-            <button className="bg-white" onClick={test}>Hola</button>
+            <button className="bg-white" onClick={getcreditsFromApi}>Hola</button>
             </main>
             
         </div>
