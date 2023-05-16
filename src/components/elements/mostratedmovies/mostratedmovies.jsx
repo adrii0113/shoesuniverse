@@ -1,6 +1,6 @@
 
 // import './../../../styles/Mostratedmovies.module.css'
-import './Mostratedmovies.module.css'
+// import './Mostratedmovies.module.css'
 import { useState, useEffect } from "react"
 
 // api calls
