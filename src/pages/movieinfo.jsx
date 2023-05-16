@@ -94,7 +94,7 @@ export default function (props) {
                         <div className="similar-movies">
                             {
                                 similarMovies.map((movie, index) =>(
-                                    <div>
+                                    <div key={index}>
                                         {movie.name}
                                     </div>
                                 ))
