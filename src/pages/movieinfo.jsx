@@ -52,8 +52,8 @@ export default function Movieinfo (props) {
             const getSimilarMoviesFromApi =  async () => {
 
                 const recibedInfo = await getSimilarShows(movie.media_type, movie.id)
-                const creditsFromApo = await getCredits(movie.id)
-                setSimilarMovies(recibedInfo.slice(0,10))
+                const creditsFromApo = await getCredits(movie.media_type,movie.id)
+                setSimilarMovies(recibedInfo.slice(0,9))
                 setCredits(creditsFromApo.cast.slice(0,10))
                 console.log(recibedInfo.slice(0,10))
             }
@@ -98,12 +98,26 @@ export default function Movieinfo (props) {
                                 {movie.overview}
                             </p>
 
+
+                            <div className="movie-score">
+
+
+                                <div class="flex justify-between mb-1">
+                                 <span class="text-base font-medium text-white-gold dark:text-white">Rating</span>
+                                <span class="text-sm font-medium text-white-gold dark:text-white">{((movie.vote_average)) + "/10"}</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="bg-white-gold h-2.5 rounded-full " style={ {width: "" + (movie.vote_average * 10)+ "%" +""}} ></div> 
+                                </div> 
+
+
+                            </div>
                             <div className="similar-movies flex space-x-4 flex-wrap">
-                                <h2>Similar movies</h2>
+                                <h2 className="w-full text-left">Similar movies</h2>
                             {
                                 similarMovies.map((movie, index) =>(
                                     
-                                    <div key={index} className="similar-movies-container">
+                                    <div key={index} className="similar-movies-container border-solid pb-10">
                                         <img class="rounded-t-lg h-auto w-20 lg:w-25" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="actorPic" />
                                         {movie.name||movie.original_title}
                                     </div>
@@ -111,9 +125,9 @@ export default function Movieinfo (props) {
 
                                 
                             }
-
+                                <h2 className="w-full text-left">Cast</h2>
                             {
-                                <div className="credits-list flex space-x-4">
+                                <div className="credits-list flex space-x-4 w-5/5">
 
                                     {credits.map((credit, index) =>(
                                         <div key={index} className="actor ">

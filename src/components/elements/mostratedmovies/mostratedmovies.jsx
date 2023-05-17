@@ -4,20 +4,23 @@
 import { useState, useEffect } from "react"
 
 // api calls
-import {getTopRatedMovies, getEscpecificShow} from "@/api/apicall"
+import {getTopRatedMovies, getEscpecificShow, getImages} from "@/api/apicall"
+import { backOut } from "framer-motion"
 
 export default function Mostratedmovies (){
 
 
     const [breakingbad,setBreakingBad]  = useState({})
-
+    const [breakingbadimage,setBreakingBadimage] = useState()
     useEffect(() => {
 
         const asignMovies = async () => {
             const breakingbadInfo = await getEscpecificShow('Breaking bad')
+            const movieImages = await getImages('tv',breakingbadInfo[0].id)
             console.log(breakingbadInfo[0])
-            
-
+            console.log(movieImages[1].file_path)
+            const image = `https://image.tmdb.org/t/p/original${movieImages[1].file_path}`
+            setBreakingBadimage(image)
 
             setBreakingBad(breakingbadInfo[0])
         }
@@ -33,7 +36,7 @@ export default function Mostratedmovies (){
             <section className="content">
             
                 {
-                <main className="card">
+                <main className="card" style={{ backgroundImage: "url(" + breakingbadimage + ")"}}>
                     <div className="breaking-bad">
                         <div className="nav">
                             <ul>

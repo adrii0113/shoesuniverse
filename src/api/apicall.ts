@@ -140,10 +140,10 @@
     }
 
 
+    // get movie/show credits
+    export const getCredits = async (media_type: string, query: number) => {
 
-    export const getCredits = async (query: number) => {
-
-        const baseUrl = `https://api.themoviedb.org/3/movie/${query}/credits?api_key=${process.env.API_KEY}`
+        const baseUrl = `https://api.themoviedb.org/3/${media_type}/${query}/credits?api_key=${process.env.API_KEY}`
 
 
         const res = await axios.get(baseUrl)
@@ -152,6 +152,17 @@
 
 
     }
+
+    // get movie images
+    export const getImages = async (media_type: string,movieid: number) =>{
+
+        const baseUrl = `https://api.themoviedb.org/3/${media_type}/${movieid}/images?api_key=${process.env.API_KEY}`
+
+        const res = await axios.get(baseUrl)
+
+        return res.data.backdrops;
+    }
+
 
     module.exports = {
         getMovieByTitle,
@@ -166,6 +177,7 @@
         getUpcomingMovies,
         getEscpecificShow,
         getSimilarShows,
-        getCredits
+        getCredits,
+        getImages
     }
   

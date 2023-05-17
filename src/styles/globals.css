@@ -175,7 +175,7 @@ a {
 }
 
 .card {
-  background-image: url('https://i.imgur.com/WL7lBiz.jpg'), -webkit-gradient( linear, right bottom, left bottom, color-stop(0, #E9C12B), color-stop(1, #EBC002), color-stop(1, #F4E003));
+  background-image: url(https://i.imgur.com/WL7lBiz.jpg), -webkit-gradient( linear, right bottom, left bottom, color-stop(0, #E9C12B), color-stop(1, #EBC002), color-stop(1, #F4E003));
   /* Chrome */
   
   background-image: url(https://i.imgur.com/WL7lBiz.jpg), -webkit-linear-( linear, right bottom, left bottom, color-stop(0, #E9C12B), color-stop(1, #EBC002), color-stop(1, #F4E003));
