@@ -54,7 +54,7 @@ export default function Movieinfo (props) {
                 const recibedInfo = await getSimilarShows(movie.media_type, movie.id)
                 const creditsFromApo = await getCredits(movie.id)
                 setSimilarMovies(recibedInfo.slice(0,10))
-                setCredits(creditsFromApo.cast.slice(0,20))
+                setCredits(creditsFromApo.cast.slice(0,10))
                 console.log(recibedInfo.slice(0,10))
             }
             getSimilarMoviesFromApi()
@@ -83,27 +83,28 @@ export default function Movieinfo (props) {
 
                     <div className="movie-info flex flex-wrap w-full">
 
-                        <div className="movie-image">
+                        <div className="movie-image w-1/5">
 
                             <img class="rounded-t-lg h-auto max-w-md" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" />
                             
                         </div>
 
 
-                        <div className="movie-description w-full text-center">
+                        <div className="movie-description w-4/5 text-center pl-48">
                             <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-white-gold md:text-5xl lg:text-6xl dark:text-white text-center">{movie.original_name || movie.original_title}</h1>
 
 
                             <p className="movie-descriptionText mb-3 text-gray-500 dark:text-gray-400">
                                 {movie.overview}
                             </p>
-                        </div>
 
-
-                        <div className="similar-movies">
+                            <div className="similar-movies flex space-x-4 flex-wrap">
+                                <h2>Similar movies</h2>
                             {
                                 similarMovies.map((movie, index) =>(
-                                    <div key={index}>
+                                    
+                                    <div key={index} className="similar-movies-container">
+                                        <img class="rounded-t-lg h-auto w-20 lg:w-25" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="actorPic" />
                                         {movie.name||movie.original_title}
                                     </div>
                                 ))
@@ -112,16 +113,22 @@ export default function Movieinfo (props) {
                             }
 
                             {
-                                <div>
+                                <div className="credits-list flex space-x-4">
 
                                     {credits.map((credit, index) =>(
-                                        <div key={index}>
+                                        <div key={index} className="actor ">
+                                            <img class="rounded-t-lg h-auto w-20 lg:w-25" src={`https://image.tmdb.org/t/p/original${credit.profile_path}`} alt="actorPic" />
                                             {credit.original_name}
                                         </div>
                                     ))}
                                 </div>
                             }
                         </div>
+
+                        </div>
+
+
+                        
                     </div>
                     
                     
