@@ -53,7 +53,7 @@
 
     export const getPopularSeries = async () => {
 
-        const url = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`
+        const url = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}`
         const res = await axios.get(url)
 
         return res.data.results;

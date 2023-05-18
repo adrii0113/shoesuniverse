@@ -4,17 +4,20 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from "pure-re
 import { color, motion, useScroll } from "framer-motion"
 import "pure-react-carousel/dist/react-carousel.es.css";
 
+
+import { useRouter } from 'next/router';
+
 export default function Moviecarrousel (){
 
     
-
+    const router = useRouter();
     const [movies,setMovies]  = useState([{}])
     const [movieImages,setMovieImages] = useState([{}]);
 
    
     useEffect(() => {
         const getMoviesFromApi = async () => {
-          const recibedInfo = await getTrendingContent('all','day')
+          const recibedInfo = await getTrendingContent('movie','day')
           setMovies(
             recibedInfo.slice(0,10)
           )
@@ -29,9 +32,24 @@ export default function Moviecarrousel (){
         
         getMoviesFromApi();
         
-        console.log(movies)
+        
        
       }, []);
+
+
+
+      const handleClick = (e) => {
+        // e.preventDefault();
+        
+        const movieName = e.target.alt
+        const movie = {name: movieName}
+        router.push({
+            pathname: '/movieinfo',
+            query: { data: movie.name}
+        })
+        // console.log(movie)
+
+      };
     return (
         
         <div className="2xl:mx-auto 1xl:container flex justify-center">
@@ -57,13 +75,13 @@ export default function Moviecarrousel (){
                                 <Slide index={0} key={index}>
                                 <motion.div className="px-1 lg:mr-7 mr-6 lg:w-1/2 sm:w-96 w-full h-full  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}">
                                     <div className="relative w-full h-full lg:block hidden">
-                                    <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt="sitting area" className="object-center object-fill w-full h-full" />
+                                    <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.original_title} className="object-center object-fill w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
                                             {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1> */}
                                         </div>
                                     </div>
                                     <div className="relative w-full h-full lg:hidden">
-                                    <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt="sitting area" className="object-center object-fill w-full h-full" />
+                                    <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.original_title} className="object-center object-fill w-full h-full" />
                                         <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
                                             {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1> */}
                                         </div>
@@ -96,20 +114,20 @@ export default function Moviecarrousel (){
                             {
                                 movies.map((movie, index) => (
                                     <Slide className="carousel__inner-slideLarge" index={0} key={index}>
-                                <motion.div className="gallery-cell w-full h-full" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                    <div className="relative w-full h-full lg:block hidden">
-                                    <img src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`} alt="sitting area" className="object-center object-fill w-full h-full" />
-                                        <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
-                                            {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{movie.title ?movie.title: 'Movie undefined'}</h1> */}
-                                        </div>
-                                    </div>
-                                    <div className="relative w-full h-full lg:hidden">
-                                    <img src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`} alt="sitting area" className="object-center object-fill w-full h-full" />
-                                        <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
-                                            {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1> */}
-                                        </div>
-                                    </div>
-                                </motion.div>
+                                        <motion.div className="gallery-cell w-full h-full" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                            <div className="relative w-full h-full lg:block hidden" onClick={handleClick}>
+                                            <img src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`} alt={movie.original_title} className="object-center object-fill w-full h-full" />
+                                                <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
+                                                    {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">{movie.title ?movie.title: 'Movie undefined'}</h1> */}
+                                                </div>
+                                            </div>
+                                            <div className="relative w-full h-full lg:hidden">
+                                            <img src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`} alt={movie.original_title} className="object-center object-fill w-full h-full" />
+                                                <div className="pl-6 pb-6 lg:pl-8 lg:pb-8 absolute left-0 bottom-0">
+                                                    {/* <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">Lounge Interior</h1> */}
+                                                </div>
+                                            </div>
+                                        </motion.div>
                             </Slide>
                             
                                 )
