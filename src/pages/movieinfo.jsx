@@ -80,8 +80,8 @@ export default function Movieinfo (props) {
                 <Header></Header>
 
                 <section className="min-h-screen">
-
-                    <div className="movie-info flex flex-wrap w-full">
+                {/* style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${movie.poster_path})`}} */}
+                    <div className="movie-info flex flex-wrap w-full" >
 
                         <div className="movie-image w-1/5">
 
@@ -117,8 +117,8 @@ export default function Movieinfo (props) {
                             {
                                 similarMovies.map((movie, index) =>(
                                     
-                                    <div key={index} className="similar-movies-container border-solid pb-10">
-                                        <img class="rounded-t-lg h-auto w-20 lg:w-25" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="actorPic" />
+                                    <div key={index} className="similar-movies-container  border-solid border-2 border-white-gold rounded overflow-hidden">
+                                        <img class="rounded-t-lg w-32 lg:w-25" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="actorPic" />
                                         {movie.name||movie.original_title}
                                     </div>
                                 ))
@@ -130,8 +130,8 @@ export default function Movieinfo (props) {
                                 <div className="credits-list flex space-x-4 w-5/5">
 
                                     {credits.map((credit, index) =>(
-                                        <div key={index} className="actor ">
-                                            <img class="rounded-t-lg h-auto w-20 lg:w-25" src={`https://image.tmdb.org/t/p/original${credit.profile_path}`} alt="actorPic" />
+                                        <div key={index} className="actor border-solid border-2 border-white-gold rounded">
+                                            <img class="rounded-t-lg w-20 lg:w-25" src={`https://image.tmdb.org/t/p/original${credit.profile_path}`} alt="actorPic" />
                                             {credit.original_name}
                                         </div>
                                     ))}
