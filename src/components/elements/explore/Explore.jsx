@@ -112,11 +112,11 @@ export default function Explore(){
             <div className="flex flex-wrap justify-center">
             {
                
-                    movies.map((movie)=>(
+                    movies.map((movie,index)=>(
 
 
                     
-                         <div className="px-2">
+                         <div className="px-2" index={index}>
       
                             <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
                                     <img class="max-w-sm" src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`} alt={movie.original_title} ></img>
