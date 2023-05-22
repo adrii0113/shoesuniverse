@@ -62,15 +62,15 @@
 
     // get all movies
 
-    export const getAllMovies = async (number: number) => {
+    // export const getAllMovies = async (number: number) => {
 
-        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&page=${number}`
-        const res = await axios.get(url)
+    //     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&page=${number}`
+    //     const res = await axios.get(url)
 
 
-        console.log(res.data)
-        return res.data
-    }
+    //     console.log(res.data)
+    //     return res.data
+    // }
 
    
     
@@ -161,6 +161,20 @@
         const res = await axios.get(baseUrl)
 
         return res.data.backdrops;
+    }
+
+
+    // get all movies
+    export const getAllMovies = async (mediaType:string,number: number) =>{
+
+        const baseUrl = `https://api.themoviedb.org/3/discover/${mediaType}?page=${number}&sort_by=popularity.desc&api_key=${process.env.API_KEY}`
+
+
+        const res = await axios.get(baseUrl)
+        console.log(res.data.results)
+        return res.data.results
+
+
     }
 
 
