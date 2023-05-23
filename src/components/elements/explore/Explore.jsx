@@ -6,6 +6,8 @@ import { getAllMovies } from "@/api/apicall"
 import { setInterval } from "timers";
 
 
+import {AiOutlineStar} from 'react-icons/ai'
+
 export default function Explore(){
 
 
@@ -18,6 +20,9 @@ export default function Explore(){
     const [loading, setLoading] = useState(true)
     const moviesTemp = [];
     const [counter,setCounter] = useState(1)
+
+
+    const [selected, setSelected] = useState('movie');
 
     const showLoading = () => (
         setLoading(true)
@@ -37,11 +42,16 @@ export default function Explore(){
     }
 
 
+    const handleClick = (value) =>{
+
+        setSelected(value)
+        console.log(selected)
+    }
 
 
     useEffect(() => {
         const getMoviesFromApi = async () => {
-          const recibedInfo = await getAllMovies('movie',counter)
+          const recibedInfo = await getAllMovies(selected,counter)
           setMovies(
             recibedInfo.slice(0,10)
           )
@@ -58,7 +68,7 @@ export default function Explore(){
         
         
        
-      }, [counter]);
+      }, [counter,selected]);
 
 
     useEffect(() => {
@@ -79,55 +89,32 @@ export default function Explore(){
 
         <div>
             
-            {/* <div classNameName="flex items-center justify-center p-4">
-                <button id="dropdownDefault" data-dropdown-toggle="dropdown"
-                    classNameName="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                    type="button">
-                    Filter by category
-                    <svg classNameName="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-
-
-                <div id="dropdown" classNameName="z-10 hidden w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
-                    <h6 classNameName="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-                    Category
-                    </h6>
-                    <ul classNameName="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-                    <li classNameName="flex items-center">
-                        <input id="apple" type="checkbox" value=""
-                        classNameName="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-
-                        <label for="apple" classNameName="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-                        Apple (56)
-                        </label>
-                    </li>
-
-                    </ul>
-                </div>
-            </div> */}
+            <select name="Category" id="" value={selected}>
+            <option value="" selected >Choose a drink</option>
+                <option value="movie" onClick={(e) => handleClick(e.target.value)}>Movie</option>
+                <option value="tv" onClick={(e) => handleClick(e.target.value)}>Serie</option>
+            </select>
 
             <div className="flex flex-wrap justify-center">
+
             {
                
                     movies.map((movie,index)=>(
 
 
                     
-                         <div className="px-2" index={index}>
+                         <div className="px-2 " key={index}>
       
-                            <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5 bg-gray-600">
                                     <img class="max-w-sm" src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`} alt={movie.original_title} ></img>
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">{movie.original_title}</div>
-                                        <p class="text-gray-700 text-base">
+                                        <p class=" text-base">
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
                                         </p>
                                     </div>
                                     <div class="px-6 pt-4 pb-2">
-                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{movie.vote_average}</span>
                                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
                                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
                                     </div>
